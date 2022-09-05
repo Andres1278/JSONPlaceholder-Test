@@ -12,10 +12,7 @@ final class ListViewControllerTest: XCTestCase {
 
     func testRegisteredCells() {
         let tableView = makeSut().getTableView()
-        let cell: UITableViewCell? = tableView.dequeueReusableCell(
-            withIdentifier: PostTableViewCell.reuseIdentifier,
-            for: IndexPath(index: 0)
-        )
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reuseIdentifier)
         XCTAssertNotNil(cell)
     }
     
@@ -32,6 +29,8 @@ final class ListViewControllerTest: XCTestCase {
 extension ListViewControllerTest {
 
     class TestPostPresenter: PostsPresenterInterface {
+        
+        var emptyRequest: Bool = false
         var numberOfItems: Int = 0
         var postNumber: Int = 0
         func deleteAllList() { }
@@ -40,6 +39,7 @@ extension ListViewControllerTest {
         func item(at indexPath: IndexPath) -> PostCellViewModel? { return nil }
         func loadNextPage() { }
         func refreshList() { }
+        func showShareAction(_ controller: UIActivityViewController, animated: Bool) { }
         func toggleFavoriteInPost(at indexPath: IndexPath) { }
         func viewDidLoad() { }
     }

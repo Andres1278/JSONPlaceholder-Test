@@ -32,7 +32,7 @@ final class DetailViewControllerTest: XCTestCase {
     
     func testRegisteredHeaderFooterView() {
         let tableView = makeSut().getTableView()
-        var header: UITableViewHeaderFooterView? = tableView.dequeueReusableHeaderFooterView(
+        let header: UITableViewHeaderFooterView? = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: DetailPostHeader.reuseIdentifier
         )
         XCTAssertNotNil(header)
